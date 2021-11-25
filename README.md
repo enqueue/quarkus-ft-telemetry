@@ -50,4 +50,6 @@ Now play around with `eu.enqueue.quarkusft.MyClient/mp-rest/url` property in
 in `MyClient.java`. Non-existing servers, reponses which time out,
 401s, 404s, etc.
 
+Play around with `applyOn` property of `@Fallback` annotation.
+
 Look at results in Application Insights

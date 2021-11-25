@@ -3,7 +3,6 @@ package eu.enqueue.quarkusft;
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.WebApplicationException;
 
 import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Retry;
@@ -17,7 +16,7 @@ public interface MyClient {
     @Path("/")
     String callDirectly();
 
-    @Fallback(fallbackMethod = "fallback", applyOn = { WebApplicationException.class })
+    @Fallback(fallbackMethod = "fallback", applyOn = { Exception.class })
     @GET
     @Path("/")
     String callWithFallback();
