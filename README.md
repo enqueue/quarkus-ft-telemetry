@@ -45,4 +45,9 @@ Path | Description
 `/retry` | Call downstream service, retry on failure
 `/fallback` | Call downstream service, fallback on failure
 
+Now play around with `eu.enqueue.quarkusft.MyClient/mp-rest/url` property in
+`src/main/resources/application.properties` or the `@Path` annotations
+in `MyClient.java`. Non-existing servers, reponses which time out,
+401s, 404s, etc.
+
 Look at results in Application Insights
