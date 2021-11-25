@@ -7,16 +7,29 @@ The dependent calls should show up in our traces.
 
 ## Getting Started
 
-Start the collector
+Download Application Insights agent
 
 ```shell
-docker compose run --service-ports -d otel-collector
+curl -L -O https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.2.3/applicationinsights-agent-3.2.3.jar
 ```
 
-Start the Quarkus
+Create `applicationinsights.json` and add your Application Insights connection string to it
+
+```javascript
+{
+    "connectionString" : "InstrumentationKey=...."
+}
+```
+Compile the application
 
 ```shell
-./gradlew quarkusDev
+./gradlew build
+```
+
+Start with application with agent
+
+```shell
+java -javaagent:./applicationinsights-agent-3.2.3.jar -jar  build/quarkus-app/quarkus-run.jar
 ```
 
 Fire some requests
@@ -32,8 +45,4 @@ Path | Description
 `/retry` | Call downstream service, retry on failure
 `/fallback` | Call downstream service, fallback on failure
 
-Look at results in [Jaeger UI](http://localhost:16686)
-
-## Links
-
-- [Quarkus OpenTelemetry Guide](https://quarkus.io/guides/opentelemetry)
+Look at results in Application Insights
