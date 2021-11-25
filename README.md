@@ -1,6 +1,6 @@
-# quarkus-ft-telemetry
+# Telemetry Playground
 
-Tracing Experiments with Quarkus.
+Tracing Experiments with Quarkus, Application Insights and OpenTelemetry.
 
 We have a JAX-RS resource which in turn calls another service.
 The dependent calls should show up in our traces.
