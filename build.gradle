@@ -1,0 +1,36 @@
+buildscript {
+    ext {
+        quarkusVersion = '2.4.2.Final'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'io.quarkus' version "${quarkusVersion}" 
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+group 'eu.enqueue'
+version '0.0.1-SNAPSHOT'
+
+dependencies {
+    implementation enforcedPlatform("io.quarkus:quarkus-universe-bom:${quarkusVersion}")
+    // implementation 'io.quarkus:quarkus-opentelemetry-exporter-otlp'
+    implementation 'io.quarkus:quarkus-rest-client'
+    implementation 'io.quarkus:quarkus-resteasy-jsonb'
+    implementation 'io.quarkus:quarkus-smallrye-fault-tolerance'
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs += ["-Xlint:all", "-Werror", '-parameters' ]
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
