@@ -21,6 +21,10 @@ Start the Quarkus
 
 Fire some requests
 
+```shell
+curl -v http://localhost:8080/hello
+```
+
 Path | Description
 ---- | -----------
 `/hello` | Just a hello
