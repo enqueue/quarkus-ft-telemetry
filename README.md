@@ -7,11 +7,7 @@ The dependent calls should show up in our traces.
 
 ## Getting Started
 
-Start the collector
-
-```shell
-docker compose run --service-ports -d otel-collector
-```
+Add your Application Insights connection String to `src/main/resources/application.properties`
 
 Start the Quarkus
 
@@ -32,7 +28,7 @@ Path | Description
 `/retry` | Call downstream service, retry on failure
 `/fallback` | Call downstream service, fallback on failure
 
-Look at results in [Jaeger UI](http://localhost:16686)
+Look at results in Application Insights.
 
 ## Links
 
