@@ -19,6 +19,12 @@ version '0.0.1-SNAPSHOT'
 
 dependencies {
     implementation enforcedPlatform("io.quarkus:quarkus-universe-bom:${quarkusVersion}")
+    implementation 'com.azure:azure-monitor-opentelemetry-exporter:1.0.0-beta.5'
+    
+    // This additional dependency is needed to make Azure HTTP client work
+    // see https://stackoverflow.com/questions/69427752/netty-httpclientsecure-class-cannot-be-found
+    implementation 'io.netty:netty-tcnative-boringssl-static:2.0.43.Final'
+    
     implementation 'io.quarkus:quarkus-opentelemetry-exporter-otlp'
     implementation 'io.quarkus:quarkus-rest-client'
     implementation 'io.quarkus:quarkus-resteasy-jsonb'
@@ -27,7 +33,9 @@ dependencies {
 
 compileJava {
     options.encoding = 'UTF-8'
-    options.compilerArgs += ["-Xlint:all", "-Werror", '-parameters' ]
+    // MicroProfile Config API contains OSGI, which leads to a
+    // compiler warning, see https://github.com/eclipse/microprofile-config/issues/716
+    // options.compilerArgs += ["-Xlint:all", "-Werror", '-parameters' ]
 }
 
 java {
