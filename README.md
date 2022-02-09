@@ -29,7 +29,7 @@ Compile the application
 Start with application with agent
 
 ```shell
-java -javaagent:./applicationinsights-agent-3.2.3.jar -jar  build/quarkus-app/quarkus-run.jar
+java -javaagent:./applicationinsights-agent-3.2.5.jar -jar  build/quarkus-app/quarkus-run.jar
 ```
 
 Fire some requests
